@@ -1,0 +1,45 @@
+version: '3.7'
+
+services:
+  preactice-node:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    image: practice-node
+    container_name: node-server
+    command: nodemon index.js
+    volumes:
+      - ./server/:/server/app 
+      - /server/app/node_modules
+    ports:
+      - "8000:8000"
+    environment:
+      - NODE_ENV=development
+      # - MONGODB_URI=your_mongodb_atlas_connection_uri
+    networks:
+      - app-network
+
+  practice-react:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    image: practice-react
+    container_name: react-client
+    command: npm start
+    volumes:
+      - ./client/:/app 
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - preactice-node
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  data-volume:
+
