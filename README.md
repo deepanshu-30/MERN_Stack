@@ -7,9 +7,12 @@ This repository provides a base Docker configuration for setting up a developmen
 Prerequisites
 Ensure you have Docker and Docker Compose installed on your system. You can download them from the following links:
 
-Docker
-Docker Compose
-Clone the Repository
+`Docker`
+
+`Docker Compose`
+
+**Clone the Repository** 
+
 Clone this repository to your local machine:
 
 `git clone https://github.com/deepanshu-30/MERN_Stack_Base-Image`
